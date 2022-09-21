@@ -8,7 +8,7 @@
 
 
 ## Link Deploy Tugas 3 : 
-**https://tugas3-alia.herokuapp.com/mywatchlist/**
+**Belum**
 
 ## Pertanyaan Tugas 3 : 
 **Jelaskan perbedaan antara JSON, XML, dan HTML!**
