@@ -8,7 +8,9 @@
 
 
 ## Link Deploy Tugas 3 : 
-**Belum**
+**https://tugaspbp-alia.herokuapp.com/mywatchlist/html**
+**https://tugaspbp-alia.herokuapp.com/mywatchlist/xml**
+**https://tugaspbp-alia.herokuapp.com/mywatchlist/json**
 
 ## Pertanyaan Tugas 3 : 
 **Jelaskan perbedaan antara JSON, XML, dan HTML!**

@@ -9,7 +9,7 @@
 
 
 ## Link Deploy Tugas 2 : 
-**https://tugas2-alia.herokuapp.com/katalog/**
+**https://tugaspbp-alia.herokuapp.com/katalog/**
 
 ## Pertanyaan Tugas 2 : 
 **1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html**
