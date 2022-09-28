@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Pembuatan Tugas</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create_task.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+
+    <div class = "create_task">
+        
+        <h1>Formulir Tugas</h1>  
+
+        <form method="POST" action="">
+            <setfield>
+            {% csrf_token %}
+            <table>
+                <div class="txt_field">
+                    Judul Tugas
+                    <input type="text" name="title" placeholder="Masukkan Judul Tugas" class="form-control">
+                </div>
+                        
+                <div class="txt_field">
+                    Deskripsi
+                    <input type="text" name="description" placeholder="Masukkan Deskripsi Tugas" class="form-control">
+                </div>
+
+                <tr>
+                    <input class="btn create_task" type="SUBMIT" value="Buat Tugas">
+                </tr>
+            </table>
+            </setfield>
+        </form>
+    <div>
+
+{% endblock content %}   

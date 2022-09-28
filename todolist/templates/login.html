@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+
+<div class = "login">
+
+    <h1>Selamat Datang!</h1>
+    <h3>Silahkan login akun anda.</h3>
+
+    <setfield>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <div class="txt_field">
+                    Username
+                    <input type="text" name="username" placeholder="Username" class="form-control">
+                </div>
+                        
+                <div class="txt_field">
+                    Password
+                    <input type="password" name="password" placeholder="Password" class="form-control">
+                </div>
+
+                <tr>
+                    <input class="btn login_btn" type="SUBMIT" value="Login">
+                </tr>
+            </table>
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}     
+        
+        <div class="signup_link">
+            Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+        </div>
+        
+        </setfield>
+</div>
+
+{% endblock content %}
