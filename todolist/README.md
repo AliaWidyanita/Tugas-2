@@ -130,6 +130,7 @@ Kedelapan, melakukan add, commit, dan push ke repository github. Setelah itu, da
 
 Kesembilan, membuat dua akun pengguna dan tiga dummy data menggunakan model Task pada akun masing-masing di situs web Heroku.
 
-
+![ToDoList-Alia]('../../ToDoList-Alia.jpg?raw=true)
+![ToDoList-Baby]('../../ToDoList-Baby.jpg?raw=true)
 
 Terakhir, mengimplementasikan fitur bonus. Pertama, membuat atribut is_finished pada model Task (dengan default value False). Fitur ini dilakukan dengan membuat dua kolom baru pada tabel task yang berisi status penyelesaian task dan tombol untuk mengubah status penyelesaian task tersebut. Selain itu, menambahkan kolom baru pada tabel task yang berisi tombol untuk menghapus suatu task.
