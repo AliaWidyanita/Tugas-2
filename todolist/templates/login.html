@@ -14,29 +14,30 @@
 
 <div class = "login">
 
-    <h1>Selamat Datang!</h1>
-    <h3>Silahkan login akun anda.</h3>
+    <div class="title">Selamat Datang!</div>
+    <div class="subtitle">Silahkan login akun anda</div>
 
-    <setfield>
         <form method="POST" action="">
             {% csrf_token %}
             <table>
-                <div class="txt_field">
-                    Username
-                    <input type="text" name="username" placeholder="Username" class="form-control">
+                <div class="input-container ic1">
+                    <input name="username" class="input" type="text" placeholder=" " />
+                    <div class="cut"></div>
+                    <label for="username" class="placeholder">Username</label>
                 </div>
-                        
-                <div class="txt_field">
-                    Password
-                    <input type="password" name="password" placeholder="Password" class="form-control">
+                <div class="input-container ic2">
+                    <input name="password" class="input" type="password" placeholder=" " />
+                    <div class="cut"></div>
+                    <label for="password" class="placeholder">Password</label>
                 </div>
-
                 <tr>
-                    <input class="btn login_btn" type="SUBMIT" value="Login">
+                    <button type="text" class="submit">Login</button>
+                    </div>
                 </tr>
             </table>
         </form>
 
+        <div class="signup_link">
         {% if messages %}
             <ul>
                 {% for message in messages %}
@@ -45,7 +46,6 @@
             </ul>
         {% endif %}     
         
-        <div class="signup_link">
             Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
         </div>
         

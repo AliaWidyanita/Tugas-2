@@ -14,19 +14,20 @@
 
 <div class = "login">
     
-    <h1 style="text-align: center;">Form Registrasi</h1>  
+    <div class="title">Form Registrasi</div>
+    <div class="subtitle">Silahkan registrasi akun baru</div>
 
-        <form method="POST" >  
-            <setfield>
+        <form method="POST" >
             {% csrf_token %}  
-            <table>  
+            <table>
+                <div class="input">
                 {{ form.as_table }}  
+                </div>
                 <tr>  
                     <td></td>
                     <td><input type="submit" name="submit" value="Daftar"/></td>  
                 </tr>  
             </table> 
-            </setfield> 
         </form>
 
     {% if messages %}  

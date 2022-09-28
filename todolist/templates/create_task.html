@@ -14,27 +14,27 @@
 
     <div class = "create_task">
         
-        <h1>Formulir Tugas</h1>  
+        <div class="title">Formulir Tugas</div>
+        <div class="subtitle">Silahkan tambah tugas anda</div>
 
         <form method="POST" action="">
-            <setfield>
             {% csrf_token %}
             <table>
-                <div class="txt_field">
-                    Judul Tugas
-                    <input type="text" name="title" placeholder="Masukkan Judul Tugas" class="form-control">
+                <div class="input-container ic1">
+                    <input name="title" class="input" type="text" placeholder=" " />
+                    <div class="cut"></div>
+                    <label for="username" class="placeholder">Nama Tugas</label>
                 </div>
-                        
-                <div class="txt_field">
-                    Deskripsi
-                    <input type="text" name="description" placeholder="Masukkan Deskripsi Tugas" class="form-control">
+                <div class="input-container ic2">
+                    <input name="description" class="input" type="text" placeholder=" " />
+                    <div class="cut"></div>
+                    <label for="password" class="placeholder">Deskripsi</label>
                 </div>
-
                 <tr>
-                    <input class="btn create_task" type="SUBMIT" value="Buat Tugas">
+                    <button type="text" class="submit">Buat Tugas</button>
+                    </div>
                 </tr>
             </table>
-            </setfield>
         </form>
     <div>
 
