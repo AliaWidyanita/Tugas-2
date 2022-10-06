@@ -118,8 +118,12 @@ body {
   width: 100%;
 }
 
+.submit:active {
+  background-color: #06b;
+}
+
 .submit:hover {
-  border-color: #000000;
+  background-color: rgb(23, 98, 159);
   transition: .5s;
   cursor: pointer;
 }
