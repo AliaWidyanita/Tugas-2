@@ -121,6 +121,12 @@ body {
   .submit:active {
     background-color: #06b;
   }
+
+  .submit:hover {
+    border-color: #000000;
+    transition: .5s;
+    cursor: pointer;
+  }
   
   .signup_link {
     font-family: sans-serif;
@@ -138,4 +144,9 @@ body {
   
   .signup_link a:hover {
     text-decoration: underline;
+  }
+
+  .set-responsive {
+    display: flex;
+    justify-content: center;
   }

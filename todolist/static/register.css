@@ -72,3 +72,14 @@ body {
   input[type="submit"]:active {
     background-color: #06b;
   }
+
+  input[type="submit"]:hover {
+    border-color: #000000;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.set-responsive {
+    display: flex;
+    justify-content: center;
+}

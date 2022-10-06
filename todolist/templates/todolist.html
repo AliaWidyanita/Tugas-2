@@ -4,54 +4,59 @@
 <title>To Do List</title>
 {% endblock meta %}
 
- {% block content %}
+{% block content %}
 
- <head>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'todolist.css' %}">
-  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todolist.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 </head>
 
-<div class="title">✨To Do List {{user.username}}✨</div>
+    <div class="title">✨To Do List {{user.username}}✨</div>
+    
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for task in todolist_data %}
 
-  <table class = "content-table">
-      <thead>
-          <tr>
-              <th>Ubah Status</th>
-              <th>Status</th>
-              <th>Tugas</th>
-              <th>Deskripsi</th>
-              <th>Tanggal Pembuatan</th>
-              <th>Hapus Tugas</th>
-          </tr>
-      </thead>
-      {% comment %} Add the data below this line {% endcomment %}
-      {% for task in todolist_data %}
-      <tr>
-          <td>
-              <button><a href="task-status/{{task.pk}}">Ubah</a></button>
-          </td>
+    <div class = "responsive">
+        <div class = "task-card">
+            <p class = "task-title">{{task.title}}</p>
+            <p class = "task-description">{{task.description}}</p>
+            <p class = "task-date"> Dibuat pada : {{task.date}}</p>
 
-          {% if task.is_finished == True%}
-          <td>✅</td>
-          {% else %}
-          <td>❌</td>
-          {% endif %}
+            <div class = "task-status">
+                {% if task.is_finished == True%}
+                    <p>✅</p>
+                    <div class="button-task">
+                        <a href="/todolist/task-status/{{task.id}}">
+                            <button class="button" type="submit">Belum Selesai</button>
+                        </a>
+                
+                        <a href="/todolist/delete-task/{{task.id}}">
+                                <button class="button" type="submit">🗑️</button>
+                        </a>
+                    </div>
+                {% else %}
+                    <p>❌</p>
+                    <div class="button-task">
+                        <a href="/todolist/task-status/{{task.id}}">
+                            <button class="button" type="submit">Selesai</button>
+                        </a>
+                
+                        <a href="/todolist/delete-task/{{task.id}}">
+                            <button class="button" type="submit">🗑️</button>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 
-          <td>{{task.title}}</td>
-          <td>{{task.description}}</td>
-          <td>{{task.date}}</td>
-          <td>
-              <a href="delete-task/{{task.pk}}"><button>🗑️</button></a></td>
-          </td>
-      </tr>
-      {% endfor %}
-  </table>
+    <br><br>
+    <a href="{% url 'todolist:create_task' %}">
+    <button class = "new-task-button">Tugas Baru</button></a></td>
 
-<a href="{% url 'todolist:create_task' %}">
-<button class = "new-task-button">Tugas Baru</button></a></td>
-
-<a href="{% url 'todolist:logout' %}">
-<button class = "logout-button">Logout</button></a></td>
+    <a href="{% url 'todolist:logout' %}">
+    <button class = "logout-button">Logout</button></a></td>
 
 {% endblock content %}
