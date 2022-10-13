@@ -13,7 +13,8 @@
 </head>
 
     <div class="title">✨To Do List {{user.username}}✨</div>
-    
+    <br><br>
+
     {% comment %} Add the data below this line {% endcomment %}
     {% for task in todolist_data %}
 
@@ -28,22 +29,22 @@
                     <p>✅</p>
                     <div class="button-task">
                         <a href="/todolist/task-status/{{task.id}}">
-                            <button class="button" type="submit">Belum Selesai</button>
+                            <button class="button-change-belum" type="submit">Kerjakan Ulang</button>
                         </a>
                 
                         <a href="/todolist/delete-task/{{task.id}}">
-                                <button class="button" type="submit">🗑️</button>
+                                <button class="button-delete" type="submit">🗑️</button>
                         </a>
                     </div>
                 {% else %}
                     <p>❌</p>
                     <div class="button-task">
                         <a href="/todolist/task-status/{{task.id}}">
-                            <button class="button" type="submit">Selesai</button>
+                            <button class="button-change" type="submit">Selesai</button>
                         </a>
                 
                         <a href="/todolist/delete-task/{{task.id}}">
-                            <button class="button" type="submit">🗑️</button>
+                            <button class="button-delete" type="submit">🗑️</button>
                         </a>
                     </div>
                 {% endif %}

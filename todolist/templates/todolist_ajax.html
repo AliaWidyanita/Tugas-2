@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todolist.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.get('/todolist/json', function (todolist) {
+                todolist.map((todo) => {
+                    $('#todo-card').append(todoCard(todo))
+                    deleteTodoCard(todo)
+                })
+            })
+            
+            const todoCard = (todo) => {
+                if (todo.fields.is_finished) {
+                    return `
+                        <div class="task-card" id=${todo.pk}>
+                            <p class = "task-title">${todo.fields.title}</p>
+                            <p class = "task-description">${todo.fields.description}</p>
+                            <p class = "task-date"> Dibuat pada : ${todo.fields.date}</p>
+                            <div class = "task-status">
+                                <p>✅</p>
+                                <div class="button-task">
+                                    <a href="/todolist/task-status/${todo.pk}">
+                                        <button class="button-change-belum" type="submit">Kerjakan Ulang</button>
+                                    </a>                            
+                                    <button class="button-delete" type="submit" id='${todo.pk}-delete'>🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                } else {
+                    return `
+                        <div class="task-card" id=${todo.pk}>
+                            <p class = "task-title">${todo.fields.title}</p>
+                            <p class = "task-description">${todo.fields.description}</p>
+                            <p class = "task-date"> Dibuat pada : ${todo.fields.date}</p>
+                            <div class = "task-status">
+                                <p>❌</p>
+                                <div class="button-task">
+                                    <a href="/todolist/task-status/${todo.pk}">
+                                        <button class="button-change" type="submit">Selesai</button>
+                                    </a>
+                                    <button class="button-delete" type="submit" id='${todo.pk}-delete'>🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }
+            }
+
+            $('#add-todo').click(function () {
+                if ($('#title').val() && $('#description').val()) {
+                    $.post(
+                        url = '/todolist/add/',
+                        data = {
+                            title: $('#title').val(),
+                            description: $('#description').val(),
+                        },
+                    )
+                }
+            })
+
+            const deleteTodoCard = (todo) => {
+                $(`#${todo.pk}-delete`).click(function () {
+                $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: `/todolist/delete-task/${todo.pk}`,
+                        type: 'DELETE',
+                        success: function (response) {
+                            $(`#${todo.pk}`).remove()
+                        },
+                    })
+                })
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="title">✨To Do List {{user.username}}✨</div>
+    <br><br>
+
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for task in todolist_data %}
+    <div class = "responsive">
+        <div id = "todo-card"></div>
+    </div>
+    {% endfor %}
+
+    <br><br>
+    <button id = "addTodoButton" class = "new-task-button">Tugas Baru</button></a></td>
+
+    <a href="{% url 'todolist:logout' %}">
+    <button class = "logout-button">Logout</button></a></td>
+
+    <div id="modalTodo" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class = "set-responsive">
+                <div class = "create_task">
+                    
+                    <div class="title">Formulir Tugas</div>
+                    <div class="subtitle">Silahkan tambah tugas anda</div>
+            
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <table>
+                            <div class="input-container ic1">
+                                <input name="title" class="input" type="text" placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="name" class="placeholder">Nama Tugas</label>
+                            </div>
+                            <div class="input-container ic2">
+                                <input name="description" class="input" type="text" placeholder=" " />
+                                <div class="cut"></div>
+                                <label for="description" class="placeholder">Deskripsi</label>
+                            </div>
+                        </table>
+                        <button type="text" class="submit" id="add-todo">Tambah Tugas</button>
+                    </form>   
+                <div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    var modal = document.getElementById("modalTodo");
+    var btn = document.getElementById("addTodoButton");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+{% endblock content %}

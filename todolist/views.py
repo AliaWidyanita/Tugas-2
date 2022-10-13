@@ -1,14 +1,17 @@
 import datetime
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse
+from todolist.models import Task
+from django.core import serializers
+from django.shortcuts import redirect, render
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from todolist.models import Task
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 
 # Create your views here.
+@csrf_exempt
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
     todolist_data = Task.objects.filter(user=request.user)
@@ -16,12 +19,11 @@ def show_todolist(request):
         'todolist_data': todolist_data,
         'user' : request.user
     }
-    return render(request, "todolist.html", context)
+    return render(request, "todolist_ajax.html", context)
 
 
 def register(request):
     form = UserCreationForm()
-
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -57,9 +59,9 @@ def create_task(request):
         title = request.POST.get("title")
         description = request.POST.get("description")
         Task.objects.create(
-            user=request.user,
-            title=title,
-            description=description,
+            user = request.user,
+            title = title,
+            description = description,
         )
         return redirect('todolist:show_todolist')
     return render(request, 'create_task.html')
@@ -85,3 +87,31 @@ def delete_task(request, id):
     task = Task.objects.get(id=id)
     task.delete()
     return redirect('todolist:show_todolist')
+
+
+def show_json(request):
+    data = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@csrf_exempt
+def add_todo(request):
+    if request.method == "POST":
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        todo = Task.objects.create(
+            user = request.user,
+            date = datetime.now(),
+            title = title, 
+            description = description,
+            is_finished = False
+        )
+        context = {
+            'pk': todo.pk,
+            'fields': {
+                'date': todo.date,
+                'title': todo.title,
+                'description': todo.description,
+                'is_finished': todo.is_finished,
+            }
+        }
+        return JsonResponse(context)
