@@ -28,11 +28,10 @@ AJAX atau _Asynchronous Javascript_ and XML adalah sekumpulan teknis pengembanga
 2.  Membuat path baru di dalam urls.py `/todolist/json` yang mengarah ke views.py fungsi `show_json`
 3.  Membuat template baru todolist_ajax.html untuk template yang menerapkan konsep AJAX dan mengarahkan url utama dari `/todolist` ke html tersebut
 4.  Menambahkan _library_ ajax yaitu `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>` ke dalam _head_ todolist_ajax.html
-5.  Menambahkan AJAX GET ke alamat `/todolist/json` AJAX GET digunakan untuk mendapatkan data yang diperoleh dari json sesuai alamat yang tertera dan data yang masuk akan diproses
+5.  Menambahkan AJAX GET ke alamat `/todolist/json` yang digunakan untuk mendapatkan data dari json sesuai alamat yang tertera dan data yang masuk akan diproses
 6.  Membuat tombol "Tugas Baru" yang membuka sebuah modal dengan form menambahkan task
 7. Membuat view baru dalam views.py untuk menambahkan tugas baru ke dalam database
-8.  Menambahkan path yang mengarah ke view add_todo dan menghubungkan form yang telah disusun ke path `/todolist/add`
-9. Modal akan langsung tertutup ketika user berhasil menambahkan todo
-10. Membuat AJAX DELETE untuk button delete pada setiap card yang ada dalam todolist
-11. Membuat view dalam views.py yang mengarahkan penghapusan data
-12. Membuat path `/todolist/delete/{id}` yang menerima ID dari path dan meneruskannya kepada view
+8.  Menambahkan path yang mengarah ke view `add_todo` dan menghubungkan form ke path `/todolist/add`
+9. Page langsung _refresh_ ketika user menambahkan task
+10. Membuat AJAX DELETE dengan membuat view dalam views.py yang menghapusankan data
+11. Membuat path `/todolist/delete-task/{id}` yang menerima ID dari path dan meneruskannya ke view

@@ -10,7 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 
-# Create your views here.
+
 @csrf_exempt
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
@@ -40,12 +40,9 @@ def login_user(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            # melakukan login terlebih dahulu
-            login(request, user) 
-            # membuat response
-            response = HttpResponseRedirect(reverse("todolist:show_todolist")) 
-            # membuat cookie last_login dan menambahkannya ke dalam response
-            response.set_cookie('last_login', str(datetime.datetime.now())) 
+            login(request, user) # melakukan login terlebih dahulu
+            response = HttpResponseRedirect(reverse("todolist:show_todolist")) # membuat response
+            response.set_cookie('last_login', str(datetime.datetime.now())) # membuat cookie last_login dan menambahkannya ke dalam response
             return response
         else:
             messages.info(request, 'Username atau Password salah!')
@@ -82,6 +79,7 @@ def task_status(request, id):
     return redirect('todolist:show_todolist')
 
 
+@csrf_exempt
 @login_required(login_url="/todolist/login/")
 def delete_task(request, id):
     task = Task.objects.get(id=id)
@@ -93,6 +91,7 @@ def show_json(request):
     data = Task.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+
 @csrf_exempt
 def add_todo(request):
     if request.method == "POST":
@@ -100,7 +99,7 @@ def add_todo(request):
         description = request.POST.get("description")
         todo = Task.objects.create(
             user = request.user,
-            date = datetime.now(),
+            date = datetime.datetime.now(),
             title = title, 
             description = description,
             is_finished = False
