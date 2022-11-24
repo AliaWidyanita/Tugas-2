@@ -3,9 +3,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":1,
         "fields":{
-            "watched":"Belum",
+            "watched": false,
             "title":"Jurassic World Domination",
-            "rating": 2.8,
+            "rating": "2.8",
             "release_date":"10 Juni 2022",
             "review": "Heran belom ada dino yang gigit tangan Chris Pratt..."
         }
@@ -14,9 +14,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":2,
         "fields":{
-            "watched":"Sudah",
+            "watched": true,
             "title":"Fantastic Beasts: The Secrets of Dumbledore",
-            "rating": 3.1,
+            "rating": "3.1",
             "release_date":"15 April 2022",
             "review": "Bisa lebih seru lagi sih."
         }
@@ -25,9 +25,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":3,
         "fields":{
-            "watched":"Belum",
+            "watched": false,
             "title":"Uncharted",
-            "rating": 3.1,
+            "rating": "3.1",
             "release_date":"18 Februari 2022",
             "review": "Agak membosankan, seperti film petualangan lainnya."
         }
@@ -36,9 +36,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":4,
         "fields":{
-            "watched":"Sudah",
+            "watched": true,
             "title":"Pengabdi Setan",
-            "rating": 3.2,
+            "rating": "3.2",
             "release_date":"28 September 2017",
             "review": "Serem!! Takut banget pas nonton T-T"
         }
@@ -47,9 +47,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":5,
         "fields":{
-            "watched":"Belum",
+            "watched": false,
             "title":"Thor: Love and Thunder",
-            "rating": 3.2,
+            "rating": "3.2",
             "release_date":"8 Juli 2022",
             "review": "Menyenangkan tapi terlalu banyak lelucon yang gak lucu :("
         }
@@ -58,9 +58,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":6,
         "fields":{
-            "watched":"Belum",
+            "watched": false,
             "title":"Minions: The Rise of Gru",
-            "rating": 3.3,
+            "rating": "3.3",
             "release_date":"1 Juli 2022",
             "review": "Lucu banget! Tapi Gru kurang banyak muncul."
         }
@@ -69,9 +69,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":7,
         "fields":{
-            "watched":"Belum",
+            "watched": false,
             "title":"Doctor Strange in the Multiverse of Madness",
-            "rating": 3.5,
+            "rating": "3.5",
             "release_date":"6 Mei 2022",
             "review": "Terlalu banyak spoiler sebelum filmnya rilis T-T"
         }
@@ -80,9 +80,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":8,
         "fields":{
-            "watched":"Sudah",
+            "watched": true,
             "title":"Train to Busan",
-            "rating": 3.8,
+            "rating": "3.8",
             "release_date":"20 Juli 2016",
             "review": "Salah satu film zombie terbaik yang pernah dibuat!"
         }
@@ -91,9 +91,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":9,
         "fields":{
-            "watched":"Sudah",
+            "watched": true,
             "title":"Miracle in Cell No. 7",
-            "rating": 4,
+            "rating": "4",
             "release_date":"8 September 2022",
             "review": "Bagus banget dan sangat emosional!"
         }
@@ -102,9 +102,9 @@
         "model":"mywatchlist.MyWatchList",
         "pk":10,
         "fields":{
-            "watched":"Sudah",
+            "watched": true,
             "title":"Joker",
-            "rating": 4.2,
+            "rating": "4.2",
             "release_date":"4 Oktober 2019",
             "review": "Luar biasa! Character development-nya bagus banget."
         }
