@@ -12,7 +12,7 @@ def show_mywatchlist(request):
     for key in data_barang_mywatchlist:
         if key == "fields":
             for x in key:
-                if (key == "watched") & (key[x] == "Sudah"):
+                if (key == "watched") & (key[x]):
                     sudah += 1
                 else:
                     belum += 1
